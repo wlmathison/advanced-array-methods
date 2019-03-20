@@ -191,24 +191,94 @@ const outEl = document.querySelector("#output")
 
 // ******************************************************************
 
-document
-    .querySelector("#companySearch")
-    .addEventListener("keypress", keyPressEvent => {
-        if (keyPressEvent.charCode === 13) {
-            /* WHEN  USER PRESSES ENTER, FIND MATCHING BUSINESS */
-            const foundAgent = businesses.find(
-                business =>
-                business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value) || business.purchasingAgent.nameLast.includes(keyPressEvent.target.value)
-            );
+// document
+//     .querySelector("#companySearch")
+//     .addEventListener("keypress", keyPressEvent => {
+//         if (keyPressEvent.charCode === 13) {
+//             /* WHEN  USER PRESSES ENTER, FIND MATCHING BUSINESS */
+//             const foundAgent = businesses.find(
+//                 business =>
+//                 business.purchasingAgent.nameFirst.includes(keyPressEvent.target.value) || business.purchasingAgent.nameLast.includes(keyPressEvent.target.value)
+//             );
 
-            outEl.innerHTML = `
-                <h2>
-                ${foundAgent.purchasingAgent.nameFirst} ${foundAgent.purchasingAgent.nameLast}
-                </h2>
-                <section>
-                <p>${foundAgent.companyName}</p>
-                <p>${foundAgent.phoneWork}</p>
-                </section>
-            `;
-        }
-    });
+//             outEl.innerHTML = `
+//                 <h2>
+//                 ${foundAgent.purchasingAgent.nameFirst} ${foundAgent.purchasingAgent.nameLast}
+//                 </h2>
+//                 <section>
+//                 <p>${foundAgent.companyName}</p>
+//                 <p>${foundAgent.phoneWork}</p>
+//                 </section>
+//             `;
+//         }
+//     });
+
+// ********************************************************************************************
+
+// businesses.forEach(business => {
+//     /* CALCULATE ORDER SUMMARY */
+//     let totalOrders = 0
+//     business.orders.forEach(order => totalOrders += order)
+
+
+//     outEl.innerHTML += `
+//         <h2>
+//             ${business.companyName}
+//             ($${totalOrders})
+//         </h2>
+//         <section>
+//             ${business.addressFullStreet}
+//         </section>
+//         <section>
+//             ${business.addressCity},
+//             ${business.addressStateCode}
+//             ${business.addressZipCode}
+//         </section>
+//     `;
+//     outEl.innerHTML += "<hr/>";
+// });
+
+// ************************************************************************************************
+
+// businesses.forEach(business => {
+//     /* CALCULATE ORDER SUMMARY */
+//     let totalOrders = business.orders.reduce(
+//         (currentTotal, nextValue) => currentTotal += nextValue,
+//         0
+//     )
+
+
+//     outEl.innerHTML += `
+//         <h2>
+//             ${business.companyName}
+//             ($${totalOrders.toFixed(2)})
+//         </h2>
+//         <section>
+//             ${business.addressFullStreet}
+//         </section>
+//         <section>
+//             ${business.addressCity},
+//             ${business.addressStateCode}
+//             ${business.addressZipCode}
+//         </section>
+//     `;
+//     outEl.innerHTML += "<hr/>";
+// });
+
+// *************************************************************************************************
+
+const monthlyRainfall = [23, 13, 27, 20, 20, 31, 33, 26, 19, 12, 14, 12, 10]
+
+const totalRainfall = monthlyRainfall.reduce((accumulator, currentValue) => accumulator + currentValue)
+
+console.log(totalRainfall)
+
+// *************************************************************************************************
+
+const words = ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"]
+
+const sentence = words.reduce((taco, quesidilla) => taco + " " + quesidilla)
+
+console.log(sentence)
+
+// *************************************************************************************************
