@@ -267,18 +267,53 @@ const outEl = document.querySelector("#output")
 
 // *************************************************************************************************
 
-const monthlyRainfall = [23, 13, 27, 20, 20, 31, 33, 26, 19, 12, 14, 12, 10]
+// const monthlyRainfall = [23, 13, 27, 20, 20, 31, 33, 26, 19, 12, 14, 12, 10]
 
-const totalRainfall = monthlyRainfall.reduce((accumulator, currentValue) => accumulator + currentValue)
+// const totalRainfall = monthlyRainfall.reduce((accumulator, currentValue) => accumulator + currentValue)
 
-console.log(totalRainfall)
+// console.log(totalRainfall)
+
+// *************************************************************************************************
+
+// const words = ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"]
+
+// const sentence = words.reduce((taco, quesidilla) => taco + " " + quesidilla)
+
+// console.log(sentence)
 
 // *************************************************************************************************
 
-const words = ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"]
+// My first attempt - returned 10 business so not correct
+// let ordersOver9000 = (order) => {
+//     return order > 9000;
+// }
 
-const sentence = words.reduce((taco, quesidilla) => taco + " " + quesidilla)
+// Array to contain all the big spenders
+// const bigSpenders = businesses.filter(business => {
+//     let bigSpender = false;
+//     if((business.orders.some(ordersOver9000)));
+//     bigSpender = true;
+//     return bigSpender;
 
-console.log(sentence)
+// })
 
-// *************************************************************************************************
+// ****************
+
+// Cleaning up after talking with Kristen - much better code 
+const bigSpenders = businesses.filter(business => {
+    return business.orders.find(order => order > 9000)
+})
+
+console.log(bigSpenders)
+
+outEl.innerHTML = `<h1>Big Spenders (At least one order over $9000)</h1>`
+
+bigSpenders.forEach(business => {
+    outEl.innerHTML += `
+      <h2>${business.companyName}</h2>
+      <section>
+        ${business.addressFullStreet}
+      </section>
+    `
+    outEl.innerHTML += "<hr/>"
+});
